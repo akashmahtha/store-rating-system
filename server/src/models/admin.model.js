@@ -1,10 +1,8 @@
-// models/admin.model.js
+
 
 import pool from "../config/db.js";
 
-// =======================================
-// Dashboard Statistics
-// =======================================
+
 
 export const getDashboardStats = async () => {
   const [[users]] = await pool.execute(
@@ -26,9 +24,7 @@ export const getDashboardStats = async () => {
   };
 };
 
-// =======================================
-// Add User (Admin/User/Owner)
-// =======================================
+
 
 export const createNewUser = async ({
   name,
@@ -53,9 +49,7 @@ export const createNewUser = async ({
   return result;
 };
 
-// =======================================
-// Get All Users (Sorting)
-// =======================================
+
 
 export const getUsers = async (
   sortBy = "name",
@@ -93,9 +87,7 @@ export const getUsers = async (
   return rows;
 };
 
-// =======================================
-// Get User By ID
-// =======================================
+
 
 export const getUserById = async (id) => {
   const query = `
@@ -114,9 +106,7 @@ export const getUserById = async (id) => {
   return rows[0];
 };
 
-// =======================================
-// Add Store
-// =======================================
+
 
 export const createStore = async ({
   name,
@@ -139,9 +129,7 @@ export const createStore = async ({
   return result;
 };
 
-// =======================================
-// Get All Stores (Sorting)
-// =======================================
+
 
 export const getStores = async (
   sortBy = "name",
@@ -185,9 +173,7 @@ export const getStores = async (
   return rows;
 };
 
-// =======================================
-// Search Users
-// =======================================
+
 
 export const searchUsers = async (search = "") => {
   const query = `
@@ -218,9 +204,7 @@ export const searchUsers = async (search = "") => {
   return rows;
 };
 
-// =======================================
-// Search Stores
-// =======================================
+
 
 export const searchStores = async (search = "") => {
   const query = `

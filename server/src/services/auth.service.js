@@ -17,9 +17,7 @@ import {
 
 import { generateToken } from "../utils/jwt.js";
 
-// =======================================
-// Register User
-// =======================================
+
 export const registerUser = async (userData) => {
     // Validate Request
     const validationError = validateRegister(userData);
@@ -28,17 +26,17 @@ export const registerUser = async (userData) => {
         throw new Error(validationError);
     }
 
-    // Check Existing Email
+
     const existingUser = await findUserByEmail(userData.email);
 
     if (existingUser) {
         throw new Error("Email already exists.");
     }
 
-    // Hash Password
+
     const hashedPassword = await bcrypt.hash(userData.password, 10);
 
-    // Save User
+
     await createUser({
         name: userData.name,
         email: userData.email,
@@ -53,25 +51,23 @@ export const registerUser = async (userData) => {
     };
 };
 
-// =======================================
-// Login User
-// =======================================
+
 export const loginUser = async ({ email, password }) => {
-    // Validate Request
+
     const validationError = validateLogin({ email, password });
 
     if (validationError) {
         throw new Error(validationError);
     }
 
-    // Find User
+
     const user = await findUserByEmail(email);
 
     if (!user) {
         throw new Error("Invalid email or password.");
     }
 
-    // Compare Password
+
     const isPasswordMatched = await bcrypt.compare(
         password,
         user.password
@@ -81,7 +77,7 @@ export const loginUser = async ({ email, password }) => {
         throw new Error("Invalid email or password.");
     }
 
-    // Generate JWT
+
     const token = generateToken(user);
 
     return {
@@ -98,15 +94,13 @@ export const loginUser = async ({ email, password }) => {
     };
 };
 
-// =======================================
-// Change Password
-// =======================================
+
 export const changeUserPassword = async (
     userId,
     oldPassword,
     newPassword
 ) => {
-    // Validate Request
+
     const validationError = validateChangePassword({
         oldPassword,
         newPassword,
@@ -116,14 +110,14 @@ export const changeUserPassword = async (
         throw new Error(validationError);
     }
 
-    // Find User by ID
+
     const user = await findUserById(userId);
 
     if (!user) {
         throw new Error("User not found.");
     }
 
-    // Verify Old Password
+
     const isPasswordMatched = await bcrypt.compare(
         oldPassword,
         user.password
@@ -133,7 +127,7 @@ export const changeUserPassword = async (
         throw new Error("Old password is incorrect.");
     }
 
-    // Prevent Same Password
+
     const isSamePassword = await bcrypt.compare(
         newPassword,
         user.password
@@ -145,10 +139,10 @@ export const changeUserPassword = async (
         );
     }
 
-    // Hash New Password
+
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    // Update Password
+
     await updatePassword(user.id, hashedPassword);
 
     return {

@@ -1,13 +1,11 @@
-// controllers/user.controller.js
+
 
 import {
     viewStores,
     submitRating,
 } from "../services/user.service.js";
 
-// =======================================
-// Get All Stores
-// =======================================
+
 export const getStores = async (req, res) => {
     try {
         const stores = await viewStores();
@@ -24,9 +22,7 @@ export const getStores = async (req, res) => {
     }
 };
 
-// =======================================
-// Submit / Update Rating
-// =======================================
+
 export const rateStore = async (req, res) => {
     try {
         const { storeId, rating } = req.body;

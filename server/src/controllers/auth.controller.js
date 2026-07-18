@@ -1,4 +1,4 @@
-// controllers/auth.controller.js
+
 
 import {
     registerUser,
@@ -6,9 +6,7 @@ import {
     changeUserPassword,
 } from "../services/auth.service.js";
 
-// =========================
-// Register Controller
-// =========================
+
 export const register = async (req, res) => {
     try {
         const result = await registerUser(req.body);
@@ -22,9 +20,7 @@ export const register = async (req, res) => {
     }
 };
 
-// =========================
-// Login Controller
-// =========================
+
 export const login = async (req, res) => {
     try {
         const result = await loginUser(req.body);
@@ -38,9 +34,7 @@ export const login = async (req, res) => {
     }
 };
 
-// =========================
-// Change Password Controller
-// =========================
+
 export const changePassword = async (req, res) => {
     try {
         const { oldPassword, newPassword } = req.body;

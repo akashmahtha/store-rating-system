@@ -1,4 +1,3 @@
-// routes/user.routes.js
 
 import express from "express";
 
@@ -12,17 +11,17 @@ import { authorizeRoles } from "../middleware/role.middleware.js";
 
 const router = express.Router();
 
-// All routes require login
+
 router.use(authenticateUser);
 
-// User and Admin can view stores
+
 router.get(
     "/stores",
     authorizeRoles("USER", "ADMIN"),
     getStores
 );
 
-// User and Admin can submit/update rating
+
 router.post(
     "/rating",
     authorizeRoles("USER", "ADMIN"),

@@ -13,16 +13,12 @@ import {
 
 import { findUserByEmail } from "../models/user.model.js";
 
-// =======================================
-// Dashboard
-// =======================================
+
 export const dashboard = async () => {
     return await getDashboardStats();
 };
 
-// =======================================
-// Add User
-// =======================================
+
 export const addUser = async (userData) => {
     const { name, email, password, address, role } = userData;
 
@@ -48,9 +44,7 @@ export const addUser = async (userData) => {
     };
 };
 
-// =======================================
-// Get All Users (Sorting)
-// =======================================
+
 export const getAllUsers = async (
     sortBy = "name",
     order = "ASC"
@@ -58,9 +52,7 @@ export const getAllUsers = async (
     return await getUsers(sortBy, order);
 };
 
-// =======================================
-// Get User Details
-// =======================================
+
 export const getUserDetails = async (id) => {
     const user = await getUserById(id);
 
@@ -71,9 +63,6 @@ export const getUserDetails = async (id) => {
     return user;
 };
 
-// =======================================
-// Add Store
-// =======================================
 export const addStore = async (storeData) => {
     await createStore(storeData);
 
@@ -83,9 +72,7 @@ export const addStore = async (storeData) => {
     };
 };
 
-// =======================================
-// Get All Stores (Sorting)
-// =======================================
+
 export const getAllStores = async (
     sortBy = "name",
     order = "ASC"
@@ -93,9 +80,6 @@ export const getAllStores = async (
     return await getStores(sortBy, order);
 };
 
-// =======================================
-// Search Users
-// =======================================
 export const searchAllUsers = async (search) => {
     const users = await searchUsers(search);
 
@@ -105,9 +89,7 @@ export const searchAllUsers = async (search) => {
     };
 };
 
-// =======================================
-// Search Stores
-// =======================================
+
 export const searchAllStores = async (search) => {
     const stores = await searchStores(search);
 

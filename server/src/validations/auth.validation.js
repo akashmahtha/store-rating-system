@@ -1,9 +1,9 @@
-// validations/auth.validation.js
+
 
 export const validateRegister = (data) => {
     const { name, email, password, address } = data;
 
-    // Name
+
     if (!name || name.trim() === "") {
         return "Name is required.";
     }
@@ -12,7 +12,7 @@ export const validateRegister = (data) => {
         return "Name must be between 10 and 60 characters.";
     }
 
-    // Email
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email) {
@@ -23,7 +23,7 @@ export const validateRegister = (data) => {
         return "Invalid email format.";
     }
 
-    // Password
+
     const passwordRegex =
         /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,16}$/;
 
@@ -35,7 +35,7 @@ export const validateRegister = (data) => {
         return "Password must be 8-16 characters with at least one uppercase letter and one special character.";
     }
 
-    // Address
+
     if (!address || address.trim() === "") {
         return "Address is required.";
     }

@@ -1,13 +1,11 @@
-// utils/jwt.js
+
 
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-/**
- * Generate JWT Token
- */
+
 export const generateToken = (user) => {
     return jwt.sign(
         {
@@ -22,9 +20,7 @@ export const generateToken = (user) => {
     );
 };
 
-/**
- * Verify JWT Token
- */
+
 export const verifyToken = (token) => {
     return jwt.verify(token, process.env.JWT_SECRET);
 };

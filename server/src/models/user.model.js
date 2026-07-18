@@ -1,10 +1,8 @@
-// models/user.model.js
+
 
 import pool from "../config/db.js";
 
-/**
- * Create a new user
- */
+
 export const createUser = async ({
     name,
     email,
@@ -28,9 +26,7 @@ export const createUser = async ({
     return result;
 };
 
-/**
- * Find user by email
- */
+
 export const findUserByEmail = async (email) => {
     const query = `
     SELECT * FROM users
@@ -42,9 +38,7 @@ export const findUserByEmail = async (email) => {
     return rows[0];
 };
 
-/**
- * Find user by ID
- */
+
 export const findUserById = async (id) => {
     const query = `
     SELECT id, name, email, address, role
@@ -57,9 +51,7 @@ export const findUserById = async (id) => {
     return rows[0];
 };
 
-/**
- * Update user password
- */
+
 export const updatePassword = async (id, password) => {
     const query = `
     UPDATE users
@@ -72,9 +64,7 @@ export const updatePassword = async (id, password) => {
     return result;
 };
 
-/**
- * Get all users (Admin)
- */
+
 export const getAllUsers = async () => {
     const query = `
     SELECT id, name, email, address, role
@@ -87,9 +77,7 @@ export const getAllUsers = async () => {
     return rows;
 };
 
-// =======================================
-// Get All Stores
-// =======================================
+
 
 export const getAllStores = async () => {
     const query = `
@@ -111,9 +99,7 @@ export const getAllStores = async () => {
     return rows;
 };
 
-// =======================================
-// Get Store By ID
-// =======================================
+
 
 export const getStoreById = async (storeId) => {
     const [rows] = await pool.execute(
@@ -124,9 +110,7 @@ export const getStoreById = async (storeId) => {
     return rows[0];
 };
 
-// =======================================
-// Check Existing Rating
-// =======================================
+
 
 export const getUserRating = async (userId, storeId) => {
     const [rows] = await pool.execute(
@@ -137,9 +121,7 @@ export const getUserRating = async (userId, storeId) => {
     return rows[0];
 };
 
-// =======================================
-// Add Rating
-// =======================================
+
 
 export const addRating = async (userId, storeId, rating) => {
     const [result] = await pool.execute(
@@ -150,9 +132,7 @@ export const addRating = async (userId, storeId, rating) => {
     return result;
 };
 
-// =======================================
-// Update Rating
-// =======================================
+
 
 export const updateRating = async (userId, storeId, rating) => {
     const [result] = await pool.execute(
